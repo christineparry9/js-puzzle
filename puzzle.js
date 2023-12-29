@@ -39,12 +39,6 @@ const checkIfTablesAreIdentical = () => {
   return true;
 };
 
-// Usage example
-if (checkIfTablesAreIdentical()) {
-  alert("You win!");
-} else {
-  console.log("The tables are not identical.");
-}
 
 
 // Add event listener on each tile
@@ -54,7 +48,7 @@ gameTiles.forEach((tile) => {
       moveTile(tile);
       e.preventDefault
       if (checkIfTablesAreIdentical()) {
-        console.log("The tables are identical!");
+        alert("You win!");
       } else {
         console.log("The tables are not identical.");
       }
