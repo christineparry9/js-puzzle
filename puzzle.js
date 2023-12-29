@@ -1,6 +1,7 @@
 // todo
 // Select all the tiles
-const tiles = document.querySelectorAll('td');
+const gameTable = document.querySelector('#game');
+const gameTiles = gameTable.querySelectorAll('td');
 
 // Check if a tile has an empty neighbour
 const canMove = (tile) => {
@@ -26,12 +27,37 @@ const moveTile = (element) => {
   element.classList.add('empty');
 };
 
+const winTable = document.querySelector('#win');
+const winTiles = winTable.querySelectorAll('td');
+
+const checkIfTablesAreIdentical = () => {
+  for (let i = 0; i < gameTiles.length; i++) {
+    if (gameTiles[i].innerHTML !== winTiles[i].innerHTML) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// Usage example
+if (checkIfTablesAreIdentical()) {
+  alert("You win!");
+} else {
+  console.log("The tables are not identical.");
+}
+
+
 // Add event listener on each tile
-tiles.forEach((tile) => {
-  tile.addEventListener('click', () => {
+gameTiles.forEach((tile) => {
+  tile.addEventListener('click', (e) => {
     if (canMove(tile)) {
       moveTile(tile);
-      checkIfPlayerWins();
+      e.preventDefault
+      if (checkIfTablesAreIdentical()) {
+        console.log("The tables are identical!");
+      } else {
+        console.log("The tables are not identical.");
+      }
     }
   });
 });
